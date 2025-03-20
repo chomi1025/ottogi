@@ -1,0 +1,14 @@
+@font-face {
+  font-family: "Pretendard-Black";
+  font-style: Black;
+  font-weight: 900;
+  src: local("Pretendard"), url(@/fonts/Pretendard-Black.woff2) format("woff2");
+}
+
+@font-face {
+  font-family: "Pretendard-Regular";
+  font-style: normal;
+  font-weight: 300;
+  src: local("Pretendard"),
+    url(@/fonts/Pretendard-Regular.woff2) format("woff2");
+}
