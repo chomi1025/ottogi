@@ -48,6 +48,7 @@ export async function getStaticProps(context) {
   const subCategoryId = String(product.subCategory);
 
   const mainCategory = await getCategoryById(mainCategoryId);
+
   const subCategory = await getSubCategoryById(mainCategoryId, subCategoryId);
 
   return {

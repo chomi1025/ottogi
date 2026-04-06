@@ -19,7 +19,6 @@ export const Item = styled.div`
     position: absolute;
     bottom: 0;
     left: 0;
-    width: ${(props) => (props.main ? "" : "calc(100vw - 40px)")};
   }
 `;
 

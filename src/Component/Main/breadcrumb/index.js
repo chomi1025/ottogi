@@ -17,8 +17,8 @@ const Breadcrumb_Wrapper = styled.div`
     color: #1d1d1b;
 
     &::after {
-      content: ${(props) => props.category && ">"};
-      margin: ${(props) => props.category && "0 10px"};
+      content: ">";
+      margin: 0 10px;
     }
   }
 
@@ -28,6 +28,7 @@ const Breadcrumb_Wrapper = styled.div`
 `;
 
 export default function Breadcrumb(props) {
+
   return (
     <>
       <Breadcrumb_Wrapper category={props.category}>
@@ -35,27 +36,26 @@ export default function Breadcrumb(props) {
           <a>홈</a>
         </Link>
 
-        {!props.category && props.link && (
-          <Link href={props.link}>
-            <a>{props.name}</a>
-          </Link>
-        )}
-
         {props.category && props.mainCategory?.id && (
           <Link href={`/front/product/category/${props.mainCategory.id}`}>
             <a>{props.mainCategory.name}</a>
           </Link>
         )}
 
-        {props.subCategory &&
-          props.mainCategory?.id &&
-          props.subCategory?.id && (
-            <Link
-              href={`/front/product/category/${props.mainCategory.id}/${props.subCategory.id}`}
-            >
-              <a>{props.subCategory.name}</a>
-            </Link>
-          )}
+        {props.category && props.subCategory?.id && (
+          <Link
+            href={`/front/product/category/${props.mainCategory?.id}/${props.subCategory.id}`}
+          >
+            <a>{props.subCategory.name}</a>
+          </Link>
+        )}
+
+        {/* 카테고리 아닐때 */}
+        {!props.category && props.link && (
+          <Link href={props.link}>
+            <a>{props.name}</a>
+          </Link>
+        )}
       </Breadcrumb_Wrapper>
     </>
   );

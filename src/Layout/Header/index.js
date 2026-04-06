@@ -44,19 +44,19 @@ export default function LayoutHeader() {
             </H.category_new>
 
             <H.category_gift>
-              <Link href="/">
+              <Link href="#">
                 <a>숨냠템</a>
               </Link>
             </H.category_gift>
 
             <H.category_only>
-              <Link href="/">
+              <Link href="#">
                 <a>only</a>
               </Link>
             </H.category_only>
 
             <H.category_event>
-              <Link href="/front/promo/event">
+              <Link href="#">
                 <a>이벤트</a>
               </Link>
             </H.category_event>

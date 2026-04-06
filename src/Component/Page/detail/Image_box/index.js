@@ -13,7 +13,7 @@ export default function ProductInfoWrapper(props) {
       <section>
         <Inner width={"1410px"} padding={"25px 0 0"}>
           <Breadcrumb
-            category={true}
+            category={false}
             product={props.product}
             mainCategory={props.mainCategory}
             subCategory={props.subCategory}
@@ -136,7 +136,11 @@ export default function ProductInfoWrapper(props) {
                   padding={"20px 0"}
                   borderRadius={"6px"}
                 />
-                <CartButton productID={props.productID} product={props.product}>
+                <CartButton
+                  productID={props.productID}
+                  product={props.product}
+                  quantity={props.value}
+                >
                   장바구니
                 </CartButton>
                 <P.Button_buy>바로구매</P.Button_buy>

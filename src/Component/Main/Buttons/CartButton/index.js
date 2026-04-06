@@ -64,10 +64,7 @@ export default function CartButton(props) {
     }
 
     const productId = props.productID;
-    if (!productId) {
-      console.error("상품 ID가 없습니다.");
-      return;
-    }
+    const addQuantity = props.quantity || 1;
 
     const cartRef = doc(db, "Cart", user.uid);
 
@@ -86,12 +83,12 @@ export default function CartButton(props) {
 
         if (existingItemIndex !== -1) {
           // 기존 상품 수량 증가
-          items[existingItemIndex].quantity += 1;
+          items[existingItemIndex].quantity += addQuantity;
         } else {
           // 새 상품 추가
           items.push({
             id: productId,
-            quantity: 1,
+            quantity: addQuantity,
             addedAt: Timestamp.now(),
           });
         }
@@ -106,7 +103,9 @@ export default function CartButton(props) {
       } else {
         // 장바구니가 없으면 새로 생성
         await setDoc(cartRef, {
-          items: [{ id: productId, quantity: 1, addedAt: Timestamp.now() }],
+          items: [
+            { id: productId, quantity: addQuantity, addedAt: Timestamp.now() },
+          ],
         });
         setMessage("카트에 담겼습니다!");
       }
