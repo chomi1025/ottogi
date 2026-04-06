@@ -1,7 +1,6 @@
 import CategoryUI from "./index.presenter";
 
 export default function Category(props) {
-  console.log(props.products);
   return (
     <CategoryUI
       mainCategory={props.mainCategory}

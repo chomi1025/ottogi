@@ -25,28 +25,26 @@ export default function ProductSort(props) {
         subCategory={props.subCategory}
         subCategories={props.subCategories}
       >
-        {!props.subCategories?.length == 0 && (
+        {props.mainCategory?.id && (
           <P.TapMenu active={!props.subCategory}>
-            <Link href={"/front/product/category/" + props.mainCategory?.id}>
+            <Link href={"/front/product/category/" + props.mainCategory.id}>
               <a>전체</a>
             </Link>
           </P.TapMenu>
         )}
 
-        {props.subCategories?.map((el) => (
-          <P.TapMenu key={el.id} active={props.subCategory?.id == el.id}>
-            <Link
-              href={
-                "/front/product/category/" +
-                props.mainCategory?.id +
-                "/" +
-                el.id
-              }
-            >
-              <a> {el.name}</a>
-            </Link>
-          </P.TapMenu>
-        ))}
+        {props.subCategories?.map(
+          (el) =>
+            props.mainCategory?.id && (
+              <P.TapMenu key={el.id} active={props.subCategory?.id == el.id}>
+                <Link
+                  href={`/front/product/category/${props.mainCategory.id}/${el.id}`}
+                >
+                  <a> {el.name}</a>
+                </Link>
+              </P.TapMenu>
+            ),
+        )}
       </P.Top>
 
       <P.Bottom>
