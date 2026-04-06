@@ -5,8 +5,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc, Timestamp } from "firebase/firestore";
-import { useCheckExists } from "./../../../../Componant/hooks/useCheckExists";
-import { schema } from "./../../../../Componant/hooks/validationSchema";
+import { useCheckExists } from "./../../../../Component/hooks/useCheckExists";
+import { schema } from "./../../../../Component/hooks/validationSchema";
 import { useRouter } from "next/router";
 
 export default function Join(props) {
@@ -35,7 +35,7 @@ export default function Join(props) {
       const userCredential = await createUserWithEmailAndPassword(
         auth,
         data.email,
-        data.password
+        data.password,
         // data.confirmPassword,
         // data.DOB,
         // data.nickname,

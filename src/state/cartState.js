@@ -1,19 +1,19 @@
 import { atom } from "recoil";
 
-// 전체 장바구니 상태
+// 전체 장바구니
 export const cartState = atom({
-  key: "cartState",
-  default: [], // 전체 장바구니 항목
+  key: `cartState/${Math.random()}`,
+  default: [],
 });
 
-// 실온 장바구니 상태
+// 실온 장바구니
 export const roomTemperatureItemsState = atom({
-  key: "roomTemperatureItemsState",
-  default: [], // 실온 항목
+  key: `roomTemperatureItemsState/${Math.random()}`,
+  default: [],
 });
 
-// 냉장 장바구니 상태
+// 냉장 장바구니
 export const refrigeratedItemsState = atom({
-  key: "refrigeratedItemsState",
-  default: [], // 냉장 항목
+  key: `refrigeratedItemsState/${Math.random()}`,
+  default: [],
 });

@@ -1,7 +1,7 @@
-import ProductSort from "@/Componant/Main/ProductSort";
+import ProductSort from "@/Component/Main/ProductSort";
 import { Inner, Title } from "../../../../../styles/main";
-import Breadcrumb from "./../../../../Componant/Main/breadcrumb/index";
-import ProductWrapper from "./../../../../Componant/Main/Product_Wrapper/index";
+import Breadcrumb from "./../../../../Component/Main/breadcrumb/index";
+import ProductWrapper from "./../../../../Component/Main/Product_Wrapper/index";
 
 export default function CategoryUI(props) {
   return (

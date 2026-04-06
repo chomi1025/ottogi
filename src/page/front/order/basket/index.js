@@ -1,22 +1,59 @@
 import * as B from "./index.style";
-import Breadcrumb from "../../../../Componant/Main/breadcrumb/index";
-import BasketComponent from "../../../../Componant/Main/Basket/Tabmenu";
+import Breadcrumb from "../../../../Component/Main/breadcrumb/index";
+import BasketComponent from "../../../../Component/Main/Basket/Tabmenu";
 import { Inner } from "../../../../../styles/main";
-import ProductCheckComponent from "@/Componant/Main/Basket/ProductList";
-import OrderComponent from "@/Componant/Main/OrderComponent";
-import { useState } from "react";
+import ProductCheckComponent from "@/Component/Main/Basket/ProductList";
+import OrderComponent from "@/Component/Main/OrderComponent";
+import { useState, useMemo, useEffect } from "react";
+import {
+  collection,
+  getDocs,
+} from "firebase/firestore";
+import { db } from "@/firebaseConfig";
 
 export default function Basket(props) {
-  const totalPrice = props.cart
-    ?.filter((item) => item.select) // select가 true인 항목만 필터링
-    .reduce((total, item) => total + item.product.price * item.quantity, 0);
-
-  const [activeTab, setActiveTab] = useState(0); // activeTab을 숫자로 관리
+  const [allProducts, setAllProducts] = useState([]);
+  const [activeTab, setActiveTab] = useState(0);
 
   const onClickActive = (number) => {
-    setActiveTab(number); // 클릭한 번호로 상태 변경
+    setActiveTab(number);
   };
 
+  const displayCart = useMemo(() => {
+    return props.cart
+      .map((cartItem) => {
+        const productDetail = allProducts.find(
+          (p) => String(p.id) === String(cartItem.id),
+        );
+        return productDetail ? { ...cartItem, product: productDetail } : null;
+      })
+      .filter(Boolean);
+  }, [props.cart, allProducts]);
+
+  const roomTemperaturePrice = displayCart
+    .filter((item) => item.select && item.product?.tag?.refrigerated === false)
+    .reduce(
+      (total, item) => total + (item.product?.price || 0) * item.quantity,
+      0,
+    );
+
+  const refrigeratedPrice = displayCart
+    .filter((item) => item.select && item.product?.tag?.refrigerated === true)
+    .reduce(
+      (total, item) => total + (item.product?.price || 0) * item.quantity,
+      0,
+    );
+
+  const totalPrice = roomTemperaturePrice + refrigeratedPrice;
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const productRef = collection(db, "product");
+      const snap = await getDocs(productRef);
+      setAllProducts(snap.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
+    };
+    fetchProducts();
+  }, []);
   return (
     <>
       <Inner width="1410px" padding="25px 0 0">
@@ -43,11 +80,8 @@ export default function Basket(props) {
                 activeTab={activeTab}
                 cart={props.cart}
                 setCart={props.setCart}
-                roomTemperatureItems={props.roomTemperatureItems}
-                refrigeratedItems={props.refrigeratedItems}
-                RefrigeratedPrice={props.RefrigeratedPrice}
-                roomTemperaturePrice={props.roomTemperaturePrice}
-                totalPrice={props.totalPrice}
+                allProducts={allProducts}
+                displayCart={displayCart}
               />
             </B.leftWrapper>
 

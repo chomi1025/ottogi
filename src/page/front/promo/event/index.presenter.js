@@ -1,4 +1,4 @@
-import Breadcrumb from "./../../../../Componant/Main/breadcrumb/index";
+import Breadcrumb from "./../../../../Component/Main/breadcrumb/index";
 import * as E from "./index.style";
 import { Inner, Title } from "../../../../../styles/main";
 import Link from "next/link";

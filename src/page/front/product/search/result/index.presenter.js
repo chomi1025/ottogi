@@ -1,6 +1,6 @@
 import Link from "next/link";
 import * as R from "./index.style";
-import ProductWrapper from "./../../../../../Componant/Main/Product_Wrapper/index";
+import ProductWrapper from "./../../../../../Component/Main/Product_Wrapper/index";
 
 export default function ResultPresenter(props) {
   return (

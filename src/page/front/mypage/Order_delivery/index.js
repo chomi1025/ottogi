@@ -1,6 +1,6 @@
-import OrderActionComponent from "@/Componant/Main/Mypage/OrderAction";
+import OrderActionComponent from "@/Component/Main/Mypage/OrderAction";
 import * as O from "./index.style";
-import CardComponent from "@/Componant/Main/Mypage/Card";
+import CardComponent from "@/Component/Main/Mypage/Card";
 
 export default function OrderDeliveryUI() {
   return (

@@ -1,15 +1,16 @@
 import { Inner } from "../../../../../styles/main";
-import Breadcrumb from "./../../../../Componant/Main/breadcrumb/index";
+import Breadcrumb from "./../../../../Component/Main/breadcrumb/index";
 import * as J from "./index.style";
 import Link from "next/link";
-import SnsLogin from "./../../../../Componant/Main/snsLogin/index";
-import { useRouter } from "next/router";
+import SnsLogin from "./../../../../Component/Main/snsLogin/index";
+import Image from "next/image";
+import { styled } from "@emotion/styled";
 
 export default function JoinGuideUI() {
   return (
     <>
       <Inner width={"1410px"}>
-        <Breadcrumb nav1={"회원가입"} />
+        <Breadcrumb link={"/front/member/join_guide"} name={"회원가입"} />
 
         <J.Wrapper>
           <h2>
@@ -20,10 +21,12 @@ export default function JoinGuideUI() {
           <div>
             <J.ItemWrapper>
               <J.Item>
-                <J.Icon
+                <Image
                   src={
                     "https://www.ottogimall.co.kr/static/imgs/front/cw/images/login/bg_intro_01.png"
                   }
+                  width={60}
+                  height={60}
                 />
                 <p>
                   신제품과 Only
@@ -32,10 +35,12 @@ export default function JoinGuideUI() {
               </J.Item>
 
               <J.Item>
-                <J.Icon
+                <Image
                   src={
                     "https://www.ottogimall.co.kr/static/imgs/front/cw/images/login/bg_intro_02.png"
                   }
+                  width={60}
+                  height={60}
                 />
                 <p>
                   다양한 할인과
@@ -44,10 +49,12 @@ export default function JoinGuideUI() {
               </J.Item>
 
               <J.Item>
-                <J.Icon
+                <Image
                   src={
                     "https://www.ottogimall.co.kr/static/imgs/front/cw/images/login/bg_intro_03.png"
                   }
+                  width={60}
+                  height={60}
                 />
                 <p>
                   오뚜기 마일리지

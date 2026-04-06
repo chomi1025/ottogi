@@ -1,8 +1,8 @@
 import * as O from "./index.style";
-import ProductWrapper from "./../../../../Componant/Main/Product_Wrapper/index";
-import ProductMenu from "../../../../Componant/Main/ProductSort/index";
+import ProductWrapper from "./../../../../Component/Main/Product_Wrapper/index";
+import ProductMenu from "../../../../Component/Main/ProductSort/index";
 import { Inner, Title } from "../../../../../styles/main";
-import SwiperSlider4 from "./../../../../Componant/Main/Swiper_slider4/index";
+import SwiperSlider4 from "./../../../../Component/Main/Swiper_slider4/index";
 
 export default function OnlyProductUI() {
   return (

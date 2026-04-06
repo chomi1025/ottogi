@@ -1,9 +1,10 @@
 {
   "compilerOptions": {
-    "baseUrl": ".", // 프로젝트 루트 기준으로 경로를 설정
+    "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"] // @ 별칭 설정, src 폴더를 가리킴
-    }
+      "@/*": ["src/*"]
+    },
+    "jsx": "preserve"
   },
-  "include": ["src/**/*"] // src 폴더 내 모든 파일 포함
+  "exclude": ["node_modules", ".next"]
 }

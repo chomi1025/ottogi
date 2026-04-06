@@ -1,18 +1,16 @@
 import { atom } from "recoil";
 
 export const userState = atom({
-  key: "userState",
+  key: `userState/${Math.random()}`,
   default: {
     uid2: "123",
     email: "",
     nickname: "",
-    isLoggedIn: false, // 초기값 설정
+    isLoggedIn: false,
     phoneNumber: "",
     primaryAddress: "",
     detailedAddress: "",
-    DOB: "", // 생일
-    name: "", // 이름
+    DOB: "",
+    name: "",
   },
 });
-
-console.log(userState);

@@ -1,16 +1,13 @@
 import BestProduct from "@/page/front/product/best/index.container";
 import { db } from "@/firebaseConfig";
-import { collection, getDocs, limit, orderBy, query } from "firebase/firestore";
-import { productsState } from "./../../../../src/state/products";
-import { useRecoilState } from "recoil";
-import { useEffect } from "react";
+import { collection, getDocs, where, limit, query } from "firebase/firestore";
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   try {
     const q = query(
       collection(db, "product"),
-      orderBy("totalOrder", "desc"),
-      limit(100)
+      where("isBest", "==", true),
+      limit(10),
     );
     const querySnapshot = await getDocs(q);
 
@@ -30,20 +27,11 @@ export async function getServerSideProps() {
       props: {
         products: [],
       },
+      revalidate: 3600,
     };
   }
 }
 
-function BestProductPage({ products }) {
-  const [productsList, setProductsList] = useRecoilState(productsState);
-
-  useEffect(() => {
-    if (products.length > 0) {
-      setProductsList(products); // 클라이언트에서 리코일 상태 업데이트
-    }
-  }, [products, setProductsList]);
-
-  return <BestProduct products={productsList} />;
+export default function BestProductPage({ products }) {
+  return <BestProduct products={products} />;
 }
-
-export default BestProductPage;

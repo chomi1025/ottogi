@@ -1,7 +1,9 @@
 import * as P from "./index.style";
-import ProductInfoWrapper from "./../../../../Componant/Page/detail/Image_box/index";
-import ProductDetailWrapper from "./../../../../Componant/Page/detail/product_detail_wrapper/index";
-import { Inner } from "./../../../../../styles/main";
+import ProductInfoWrapper from "./../../../../Component/Page/detail/Image_box/index";
+import ProductDetailWrapper from "./../../../../Component/Page/detail/product_detail_wrapper/index";
+import { Inner } from "styles/main";
+
+import ProductWrapper from "@/Component/Main/Product_Wrapper";
 
 export default function ProductDetailUI(props) {
   return (
@@ -15,6 +17,8 @@ export default function ProductDetailUI(props) {
         productID={props.productID}
         mainCategory={props.mainCategory}
         subCategory={props.subCategory}
+        onIncrease={props.onIncrease}
+        onDecrease={props.onDecrease}
         grade={props.grade}
         grade_star={props.grade_star}
       />
@@ -24,6 +28,8 @@ export default function ProductDetailUI(props) {
         onclickValue={props.onclickValue}
         basePrice={props.basePrice}
         value={props.value}
+        onIncrease={props.onIncrease}
+        onDecrease={props.onDecrease}
         product={props.product}
         grade_star={props.grade_star}
       />
@@ -31,14 +37,13 @@ export default function ProductDetailUI(props) {
       {/* 관련 상품 소개 */}
       <P.recommend_goods_wrapper>
         <Inner width={"1280px"}>
-          <h4>함께 구매하면 더 좋은 상품</h4>
+          <h2>이런상품 어때요?</h2>
 
-          <P.product_wrapper>
-            <div>asdasdasd</div>
-            <div>asdasdasdasdsdad</div>
-            <div>asdasdasdasd</div>
-            <div>asdas</div>
-          </P.product_wrapper>
+          <p>
+            패밀리님들이 선택한 <span>Best</span> 아이템이에요!
+          </p>
+
+          <ProductWrapper products={props.recommendProducts} />
         </Inner>
       </P.recommend_goods_wrapper>
     </>

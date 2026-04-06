@@ -1,8 +1,8 @@
 import { RecoilRoot } from "recoil";
 import "../styles/globals.css";
 import Layout from "@/Layout/index";
-import AuthProvider from "@/Componant/path/index";
-import MyPopup from "@/Componant/Main/CartPopup/index";
+import AuthProvider from "@/Component/path/index";
+import MyPopup from "@/Component/Main/CartPopup";
 
 export default function App({ Component, pageProps }) {
   const getLayout = Component.getLayout || ((page) => page);

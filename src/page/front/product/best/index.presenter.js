@@ -1,4 +1,4 @@
-import ProductWrapper from "./../../../../Componant/Main/Product_Wrapper/index";
+import ProductWrapper from "./../../../../Component/Main/Product_Wrapper/index";
 import { Inner, Title } from "../../../../../styles/main";
 
 export default function BestProductUI(props) {

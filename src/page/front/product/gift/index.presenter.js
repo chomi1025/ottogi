@@ -1,6 +1,6 @@
 import * as G from "./index.style";
-import ProductMenu from "../../../../Componant/Main/ProductSort/index";
-import ProductWrapper from "./../../../../Componant/Main/Product_Wrapper/index";
+import ProductMenu from "../../../../Component/Main/ProductSort/index";
+import ProductWrapper from "./../../../../Component/Main/Product_Wrapper/index";
 import { Inner, Title } from "../../../../../styles/main";
 
 export default function GiftProductUI() {

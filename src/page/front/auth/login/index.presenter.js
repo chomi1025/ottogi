@@ -1,13 +1,13 @@
-import Breadcrumb from "../../../../Componant/Main/breadcrumb/index";
+import Breadcrumb from "../../../../Component/Main/breadcrumb/index";
 import * as L from "./index.style";
 import Link from "next/link";
-import SnsLogin from "../../../../Componant/Main/snsLogin/index";
+import SnsLogin from "../../../../Component/Main/snsLogin/index";
 import { Inner } from "../../../../../styles/main";
 
 export default function LoginPresenter(props) {
   return (
     <Inner width="1410px" margin="0 auto" padding={"25px 0 0"}>
-      <Breadcrumb nav1={"로그인"} src1={"guest_login"} />
+      <Breadcrumb nav1={"로그인"} src1={"guest_login"} link={"/guest_login"} />
 
       <L.loginWrapper>
         <h2>

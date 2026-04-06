@@ -24,17 +24,15 @@ export default function LoginContainer() {
   const onChangeID = (event) => setloginEmail(event.target.value);
   const onChangePassword = (event) => setLoginPassword(event.target.value);
 
-  // 🔥 새로고침 시 localStorage에서 로그인 정보 복원
   useEffect(() => {
     const savedUser = localStorage.getItem("user");
     if (savedUser) {
-      const userData = JSON.parse(savedUser); // 저장된 값 파싱
-      console.log("복원된 userData:", userData); // 확인용 로그 추가
-      setUser(userData); // 로그인 상태 복원
+      const userData = JSON.parse(savedUser);
+      console.log("복원된 userData:", userData);
+      setUser(userData);
     }
-  }, [setUser]); // 로그인 상태 복원만 처리
+  }, [setUser]);
 
-  // 🔥 로그인 상태 감지 및 localStorage 연동
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       console.log("Auth state changed:", user);
@@ -47,7 +45,6 @@ export default function LoginContainer() {
           fetchedNickname = userDoc.data().nickname;
         }
 
-        // ✅ Recoil 상태 업데이트
         const userData = {
           uid: user.uid,
           email: user.email,
@@ -57,19 +54,17 @@ export default function LoginContainer() {
 
         setUser(userData);
 
-        // ✅ localStorage에 저장 첫번째저장
         localStorage.setItem("user", JSON.stringify(userData));
         console.log(user);
       } else {
         setUser(null);
-        localStorage.removeItem("user"); // 로그아웃 시 삭제
+        localStorage.removeItem("user");
       }
     });
 
     return () => unsubscribe();
   }, [setUser]);
 
-  // 🔥 로그인 함수
   const onClickLogin = async (event) => {
     event.preventDefault();
     const trimmedEmail = loginEmail.trim();
@@ -98,7 +93,6 @@ export default function LoginContainer() {
         fetchedNickname = userDoc.data().nickname;
       }
 
-      // ✅ Recoil 상태 & localStorage 동시 업데이트
       const userData = {
         uid: user.uid,
         email: user.email,
@@ -107,7 +101,6 @@ export default function LoginContainer() {
       };
       setUser(userData);
 
-      // localStorage에도 저장
       localStorage.setItem("user", JSON.stringify(userData));
 
       router.push("/main");

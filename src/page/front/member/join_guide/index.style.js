@@ -52,11 +52,3 @@ export const ItemWrapper = styled.ul`
 export const Item = styled.li`
   width: calc(100% / 3);
 `;
-
-export const Icon = styled.span`
-  display: inline-block;
-  background: ${(props) => `url(${props.src}) no-repeat center center`};
-  width: 60px;
-  height: 60px;
-  margin-bottom: 10px;
-`;

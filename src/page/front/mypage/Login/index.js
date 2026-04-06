@@ -1,4 +1,4 @@
-import CardComponent from "@/Componant/Main/Mypage/Card";
+import CardComponent from "@/Component/Main/Mypage/Card";
 import * as G from "./index.style";
 import Link from "next/link";
 
