@@ -7,16 +7,15 @@ import { Inner } from "../../../../../styles/main";
 export default function LoginPresenter(props) {
   return (
     <Inner width="1410px" margin="0 auto" padding={"25px 0 0"}>
-      <Breadcrumb nav1={"로그인"} src1={"guest_login"} link={"/guest_login"} />
+      <Breadcrumb name={"로그인"} link={"/front/auth/login"} category={false} />
 
       <L.loginWrapper>
-        <h2>
+        <div>
           <img
-            src="https://firebasestorage.googleapis.com/v0/b/project-90a5b.appspot.com/o/Logo.svg?alt=media&token=a9fa2351-6496-4cfd-a1f7-68fb5754f317"
-            alt=""
+            src="https://www.otokimall.com/static/imgs/front/cw/images/Logo_new.png"
+            alt="오뚜기몰 로고"
           />
-          엔 다 있다!
-        </h2>
+        </div>
 
         <form onSubmit={props.onClickLogin}>
           <L.login_box>
@@ -24,7 +23,6 @@ export default function LoginPresenter(props) {
               <input
                 type="text"
                 placeholder="이메일"
-                ref={props.inputEl}
                 value={props.loginEmail}
                 onChange={props.onChangeID}
               />
@@ -32,15 +30,10 @@ export default function LoginPresenter(props) {
 
             <div>
               <input
-                type={props.buttonState ? "text" : "password"}
+                type={"password"}
                 placeholder="비밀번호"
-                ref={props.inputEl}
                 value={props.loginPassword}
                 onChange={props.onChangePassword}
-              />
-              <L.showButton
-                buttonState={props.buttonState}
-                onClick={props.onClickButton}
               />
             </div>
           </L.login_box>

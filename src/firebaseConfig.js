@@ -1,11 +1,5 @@
 import { getApp, getApps, initializeApp } from "firebase/app";
-
-import {
-  browserLocalPersistence,
-  getAuth,
-  setPersistence,
-  onAuthStateChanged,
-} from "firebase/auth";
+import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -20,19 +14,5 @@ const firebaseConfig = {
 const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
 const db = getFirestore(app);
 const auth = getAuth(app);
-
-setPersistence(auth, browserLocalPersistence)
-  .then(() => {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        console.log("사용자 로그인 상태:");
-      } else {
-        console.log("사용자 로그아웃 상태");
-      }
-    });
-  })
-  .catch((error) => {
-    console.error("Error setting persistence:", error);
-  });
 
 export { auth, db };

@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 
 export const Icons = styled.div`
+  height: 57px;
   display: flex;
   font-size: 14px;
   align-items: end;
@@ -31,28 +32,36 @@ export const Icon_login = styled.div`
   }
 `;
 
-export const Icon_logout = styled.div`
+export const Icon_logout = styled.button`
   cursor: pointer;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  vertical-align: bottom;
+  transform: translateY(-2px);
+  line-height: normal;
+  height: 100%;
 
-  a {
-    position: relative;
+  img {
     display: block;
-    text-align: center;
+    width: 30px;
+    height: 30px;
+    margin: 0 auto;
+    transform: translateY(-2px);
+  }
 
-    span {
-      display: inline-block;
-      text-align: center;
-      width: 30px;
-      height: 30px;
-      background: url("https://firebasestorage.googleapis.com/v0/b/project-90a5b.appspot.com/o/icon_login.svg?alt=media&token=11906fe3-e397-4d98-b8bd-d5636de35dcc")
-        no-repeat center top;
-      background-size: contain;
-    }
-
-    p {
-      letter-spacing: -1px;
-      margin-top: 6px;
-    }
+  p {
+    margin: 0;
+    margin-top: 6px;
+    font-size: 14px;
+    color: #1d1d1b;
+    letter-spacing: -1px;
+    line-height: 1;
   }
 `;
 
@@ -61,15 +70,6 @@ export const Icon_mypage = styled.div`
   position: relative;
   display: block;
   text-align: center;
-
-  span {
-    display: inline-block;
-    width: 30px;
-    height: 30px;
-    background: url("https://firebasestorage.googleapis.com/v0/b/project-90a5b.appspot.com/o/icon_my.svg?alt=media&token=43c2b447-db42-4ac6-aa61-20d020675434")
-      no-repeat center top;
-    background-size: contain;
-  }
 
   p {
     letter-spacing: -1px;

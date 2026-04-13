@@ -29,7 +29,7 @@ const AuthProvider = ({ children }) => {
     return () => unsubscribe();
   }, [setUserInfo]);
 
-  return <>{children}</>; // 로딩 상태 없이 children을 바로 렌더링
+  return <>{children}</>;
 };
 
 export default AuthProvider;

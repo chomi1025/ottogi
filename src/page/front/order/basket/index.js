@@ -5,10 +5,7 @@ import { Inner } from "../../../../../styles/main";
 import ProductCheckComponent from "@/Component/Main/Basket/ProductList";
 import OrderComponent from "@/Component/Main/OrderComponent";
 import { useState, useMemo, useEffect } from "react";
-import {
-  collection,
-  getDocs,
-} from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 import { db } from "@/firebaseConfig";
 
 export default function Basket(props) {

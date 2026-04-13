@@ -3,15 +3,16 @@ import styled from "@emotion/styled";
 export const Contents = styled.div`
   display: flex;
   flex-wrap: wrap;
-  margin: 0 -20px;
+  width: 100%;
+  margin: 0 auto;
   border-bottom: 1px solid #e4e4e4;
-  width: calc(100vw - 40px);
+  box-sizing: border-box;
 `;
 
 export const Item = styled.div`
-  width: calc(100% / 4 - 40px);
-  margin: 0 20px;
-  padding-bottom: 40px;
+  width: 25%;
+  padding: 0 10px 40px;
+  box-sizing: border-box;
   position: relative;
 
   &:nth-of-type(4n + 1)::after {

@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 export const loginWrapper = styled.div`
   text-align: center;
 
-  h2 {
+  > div:first-of-type {
     display: flex;
     justify-content: center;
     width: 100%;

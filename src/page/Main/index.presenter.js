@@ -8,7 +8,13 @@ const BANNER_LIST = [
   {
     id: 1,
     url: "/Layout/main/1.png",
-    text: ["SWEET", <br />, "HOME"],
+    text: (
+      <>
+        SWEET
+        <br />
+        HOME
+      </>
+    ),
   },
   { id: 2, url: "/Layout/main/2.png", text: "건강한O늘!" },
   { id: 3, url: "/Layout/main/3.png", text: "패밀리 혜택" },

@@ -6,29 +6,25 @@ const Breadcrumb_Wrapper = styled.div`
   align-items: center;
   font-size: 14px;
   color: #aaaaaa;
-  a:nth-of-type(1) {
-    &::after {
-      content: ">";
-      margin: 0 10px;
-    }
+
+  a {
+    display: flex;
+    align-items: center;
   }
 
-  a:nth-of-type(2) {
-    color: #1d1d1b;
-
-    &::after {
-      content: ">";
-      margin: 0 10px;
-    }
+  a + a::before {
+    content: ">";
+    margin: 0 10px;
+    color: #aaaaaa;
   }
 
-  a:nth-of-type(3) {
+  a:last-child {
     color: #1d1d1b;
+    font-weight: 700;
   }
 `;
 
 export default function Breadcrumb(props) {
-
   return (
     <>
       <Breadcrumb_Wrapper category={props.category}>

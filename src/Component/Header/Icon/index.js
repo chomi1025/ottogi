@@ -15,6 +15,7 @@ export default function IconComponent() {
   const [user, setUser] = useState(null);
   const [cart, setCart] = useRecoilState(cartState);
 
+  // 장바구니 실시간
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
       if (firebaseUser) {
@@ -39,29 +40,19 @@ export default function IconComponent() {
     return () => unsubscribe();
   }, []);
 
+  // 유저정보
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      const storedUser = localStorage.getItem("user");
-      if (storedUser) {
-        setUser(JSON.parse(storedUser));
-      }
-    }
-
     const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
       if (firebaseUser) {
-        const newUser = {
-          email: firebaseUser.email || "",
-          nickname: firebaseUser.displayName || "",
+        setUser((prev) => ({
+          ...prev,
           isLoggedIn: true,
-        };
-        setUser(newUser);
-        localStorage.setItem("user", JSON.stringify(newUser));
+          email: firebaseUser.email,
+        }));
       } else {
         setUser(null);
-        localStorage.removeItem("user");
       }
     });
-
     return () => unsubscribe();
   }, [setUser]);
 
@@ -80,32 +71,19 @@ export default function IconComponent() {
     }
   };
 
-  const handleMypage = async () => {
-    if (user.isLoggedIn) {
-      try {
-        router.push("/front/mypage");
-      } catch (error) {
-        console.error("마이페이지 이동 중 에러 발생:", error);
-      }
-    } else {
-      router.push("/front/auth/guest_login");
-    }
-  };
-
   return (
     <>
       {/* 로그인/로그아웃 */}
       <H.Icons>
         {user?.isLoggedIn ? (
           <H.Icon_logout onClick={handleLogout}>
-            <a>
-              <Image
-                src={"/Layout/Header/icon_login.svg"}
-                width={30}
-                height={30}
-              />
-              <p>로그아웃</p>
-            </a>
+            <Image
+              src={"/Layout/Header/icon_login.svg"}
+              width={30}
+              height={30}
+            />
+
+            <p>로그아웃</p>
           </H.Icon_logout>
         ) : (
           <H.Icon_login>
@@ -123,8 +101,17 @@ export default function IconComponent() {
         )}
 
         {/* 마이페이지 */}
-        <H.Icon_mypage onClick={handleMypage}>
-          <Image src={"/Layout/Header/icon_my.svg"} width={30} height={30} />
+        <H.Icon_mypage>
+          <Link href="/front/mypage">
+            <a>
+              <Image
+                src={"/Layout/Header/icon_my.svg"}
+                width={30}
+                height={30}
+              />
+            </a>
+          </Link>
+
           <p>마이페이지</p>
         </H.Icon_mypage>
 
