@@ -31,19 +31,23 @@
 <summary><b>📸 주요 기능 상세보기 (클릭)</b></summary>
 <br>
 
-#### 🔑 인증 및 세션 관리
-- Firebase Auth를 활용한 로그인/회원가입.
-- 로그인 상태에 따른 헤더 UI 분기 처리.
+### 🔑 인증 및 세션 관리 (Auth)
+- **Firebase Auth**를 활용한 이메일 기반 로그인 및 회원가입 구현.
+- **Persistence 설정**: 브라우저 종료 후에도 로그인 상태가 유지되도록 로컬 스토리지 기반 인증 유지.
+- **조건부 렌더링**: 사용자의 인증 상태를 실시간 감지하여 헤더 UI(로그인/로그아웃 버튼 등) 분기 처리.
 - [상세보기](https://github.com/chomi1025/ottogi/wiki/%EB%A1%9C%EA%B7%B8%EC%9D%B8)
 
-#### 🛍️ 상품 리스트 및 장바구니
-- Firestore 실시간 데이터 페칭.
-- Recoil을 활용해 상품 추가 시 상단 장바구니 카운트 즉각 업데이트.
+### 🏷️ 상품 리스트 및 상세 (Product)
+- **SSG(Static Site Generation)**: Next.js의 정적 생성을 활용하여 수많은 상품 상세 페이지의 초기 로딩 성능 최적화.
+- **동적 카테고리**: Firestore와 연동하여 메인/서브 카테고리에 따른 상품 필터링 및 노출.
+- **이미지 최적화**: `next/image`를 사용해 레이지 로딩 및 디바이스별 이미지 최적화 적용.
+- [상세보기](https://github.com/chomi1025/ottogi/wiki/%EC%83%81%ED%92%88%EB%A6%AC%EC%8A%A4%ED%8A%B8)
+
+### 🛒 장바구니 관리 (Basket)
+- **실시간 배지(Count)**: 상품 추가 시 Recoil 상태 관리 또는 `onSnapshot`을 통해 헤더의 장바구니 카운트 즉각 업데이트.
+- **스마트 그룹화**: 식품 쇼핑몰 특성을 고려하여 **실온 / 냉장·냉동 상품** 배송 온도별 자동 분류 노출.
+- **데이터 무결성**: 동일 상품 추가 시 수량만 증가시키고, 중복 담기를 방지하는 비즈니스 로직 구축.
 - [상세보기](https://github.com/chomi1025/ottogi/wiki/%EC%9E%A5%EB%B0%94%EA%B5%AC%EB%8B%88)
-
-#### 📦 주문 프로세스
-- 장바구니 데이터를 유지하며 주문서 페이지로 이동하는 로직 구축.
-- [상세보기](https://github.com/chomi1025/ottogi/wiki/%EB%A1%9C%EA%B7%B8%EC%9D%B8)
 </details>
 
 　
