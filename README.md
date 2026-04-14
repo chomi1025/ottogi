@@ -21,7 +21,7 @@
 
 | 구분 | 링크 |
 | --- | --- |
-| **🚀 서비스** | [https://ottogi-two.vercel.app](https://ottogi-two.vercel.app) |
+| **🚀 서비스** | [오뚜기몰](https://ottogi-two.vercel.app) |
 | **🧪 테스트 계정** | **EMAIL:** `test123@test.com` / **PW:** `123456` |
 
 　
