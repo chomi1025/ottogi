@@ -34,13 +34,16 @@
 #### 🔑 인증 및 세션 관리
 - Firebase Auth를 활용한 로그인/회원가입.
 - 로그인 상태에 따른 헤더 UI 분기 처리.
+- [상세보기](https://github.com/chomi1025/ottogi/wiki/%EB%A1%9C%EA%B7%B8%EC%9D%B8)
 
 #### 🛍️ 상품 리스트 및 장바구니
 - Firestore 실시간 데이터 페칭.
 - Recoil을 활용해 상품 추가 시 상단 장바구니 카운트 즉각 업데이트.
+- [상세보기](https://github.com/chomi1025/ottogi/wiki/%EB%A1%9C%EA%B7%B8%EC%9D%B8)
 
 #### 📦 주문 프로세스
 - 장바구니 데이터를 유지하며 주문서 페이지로 이동하는 로직 구축.
+- [상세보기](https://github.com/chomi1025/ottogi/wiki/%EB%A1%9C%EA%B7%B8%EC%9D%B8)
 </details>
 
 　
@@ -49,7 +52,7 @@
 | 분류 | 사용 기술 | 선정 이유 |
 | --- | --- | --- |
 | **Frontend** | Next.js 12 | SSR/SSG 데이터 페칭 전략 학습 및 SEO 최적화 경험 |
-| **State Management** | Recoil | Redux 대비 보일러플레이트 없이 빠른 상태 관리 구현 가능 |
+| **State Management** | Recoil | Redux 대비 빠른 상태 관리 구현 가능 |
 | **Backend/DB** | Firebase | 별도 서버 구축 없이 인증 및 실시간 DB를 신속하게 구현 |
 
 　
