@@ -39,7 +39,7 @@
 #### 🛍️ 상품 리스트 및 장바구니
 - Firestore 실시간 데이터 페칭.
 - Recoil을 활용해 상품 추가 시 상단 장바구니 카운트 즉각 업데이트.
-- [상세보기](https://github.com/chomi1025/ottogi/wiki/%EB%A1%9C%EA%B7%B8%EC%9D%B8)
+- [상세보기](https://github.com/chomi1025/ottogi/wiki/%EC%9E%A5%EB%B0%94%EA%B5%AC%EB%8B%88)
 
 #### 📦 주문 프로세스
 - 장바구니 데이터를 유지하며 주문서 페이지로 이동하는 로직 구축.
