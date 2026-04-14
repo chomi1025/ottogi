@@ -33,7 +33,6 @@ export default function ReivewWrapper(props) {
     setItems(Number(e.target.value));
   };
 
-  console.log(props.result);
   return (
     <P.goods_review id="review">
       <P.review_title_wrapper>

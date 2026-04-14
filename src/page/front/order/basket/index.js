@@ -16,32 +16,27 @@ export default function Basket(props) {
     setActiveTab(number);
   };
 
-  const displayCart = useMemo(() => {
-    return props.cart
-      .map((cartItem) => {
-        const productDetail = allProducts.find(
-          (p) => String(p.id) === String(cartItem.id),
-        );
-        return productDetail ? { ...cartItem, product: productDetail } : null;
-      })
-      .filter(Boolean);
-  }, [props.cart, allProducts]);
+const displayCart = useMemo(() => {
+  if (!props.cart) return [];
 
-  const roomTemperaturePrice = displayCart
-    .filter((item) => item.select && item.product?.tag?.refrigerated === false)
+  return props.cart.map((cartItem) => {
+    const productDetail = allProducts.find(
+      (p) => String(p.id) === String(cartItem.id)
+    );
+
+    return {
+      ...cartItem,
+      product: productDetail || cartItem.product
+    };
+  });
+}, [props.cart, allProducts]);
+
+  const totalPrice = displayCart
+    .filter((item) => item.select)
     .reduce(
       (total, item) => total + (item.product?.price || 0) * item.quantity,
       0,
     );
-
-  const refrigeratedPrice = displayCart
-    .filter((item) => item.select && item.product?.tag?.refrigerated === true)
-    .reduce(
-      (total, item) => total + (item.product?.price || 0) * item.quantity,
-      0,
-    );
-
-  const totalPrice = roomTemperaturePrice + refrigeratedPrice;
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -51,6 +46,7 @@ export default function Basket(props) {
     };
     fetchProducts();
   }, []);
+
   return (
     <>
       <Inner width="1410px" padding="25px 0 0">

@@ -4,7 +4,7 @@ import { useRecoilState } from "recoil";
 
 export default function BasketMember() {
   const [cart, setCart] = useRecoilState(cartState); // 회원 장바구니
-  console.log(cart);
+
   // 실온상품만 !
   const roomTemperatureItems = cart.filter(
     (item) => item.product?.tag?.refrigerated === false,
@@ -33,7 +33,7 @@ export default function BasketMember() {
   return (
     <Basket
       cart={cart}
-      setCart={setCart} // 로그인 여부에 따라 다른 setCart 사용
+      setCart={setCart}
       roomTemperatureItems={roomTemperatureItems}
       refrigeratedItems={refrigeratedItems}
       RefrigeratedPrice={RefrigeratedPrice}

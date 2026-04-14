@@ -56,10 +56,11 @@ export const TopWrapper = styled.div`
 
 export const ButtonWrapper = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   padding: 5px;
   gap: 5px;
   width: calc(100% - 5px);
+  margin: 0 auto;
 
   a {
     min-width: 50%;
@@ -83,9 +84,14 @@ export const ButtonWrapper = styled.div`
 
 export const GiftButton = styled.span``;
 
-export const OrderButton = styled.span``;
+export const OrderButton = styled.button`
+  background-color: transparent;
+  color: #fff;
+  font-weight: 700;
+  font-size: 18px;
+`;
 
-export const EmptyCartButton = styled.div`
+export const EmptyCartButton = styled.button`
   width: 100%;
   padding: 24px 40px;
   border-radius: 0 0 6px 0px;

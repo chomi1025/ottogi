@@ -139,6 +139,5 @@ async function getProducts(mainId, subId) {
 }
 
 export default function CategoryPage(props) {
-  console.log(props);
   return <Category {...props} category={true} />;
 }

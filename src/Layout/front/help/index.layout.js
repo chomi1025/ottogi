@@ -6,8 +6,7 @@ export default function LayoutHelp({ FAQ, children }) {
   const router = useRouter();
   const address = router.route;
   const pathSegments = address.split("/");
-  const lastSegment = pathSegments[pathSegments.length - 1]; // 마지막 요소 추출
-  console.log("FAQ의값은", lastSegment);
+  const lastSegment = pathSegments[pathSegments.length - 1];
 
   return (
     <L.wrapper lastSegment={lastSegment}>

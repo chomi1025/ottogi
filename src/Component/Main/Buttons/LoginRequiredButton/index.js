@@ -20,15 +20,15 @@ const Button = styled.button`
 `;
 
 export default function LoginRequiredButton(props) {
-  const user = useRecoilValue(userState); // 로그인 상태 가져오기
+  const user = useRecoilValue(userState);
 
-  const [showLoginPopup, setShowLoginPopup] = useState(false); // 로그인 팝업 상태
+  const [showLoginPopup, setShowLoginPopup] = useState(false);
 
   const handleOpenPopup = () => {
     if (!user.isLoggedIn) {
-      setShowLoginPopup(true); // 로그인하지 않으면 팝업을 띄운다.
+      setShowLoginPopup(true);
     } else {
-      console.log("로그인상태군요");
+      console.log("로그인상태");
     }
   };
 

@@ -73,7 +73,7 @@ async function getCategoryById(mainCategoryId) {
     const querySnapshot = await getDocs(q);
 
     if (querySnapshot.empty) {
-      console.log("No matching mainCategory found");
+      console.log("123123");
       return null;
     }
 

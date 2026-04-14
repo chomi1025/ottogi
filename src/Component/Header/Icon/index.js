@@ -25,7 +25,16 @@ export default function IconComponent() {
           if (docSnap.exists()) {
             const items = docSnap.data().items;
 
-            setCart(items);
+            setCart((prevCart) => {
+              return items.map((dbItem) => {
+                const existing = prevCart.find((item) => item.id === dbItem.id);
+
+                return {
+                  ...dbItem,
+                  select: existing?.select ?? true,
+                };
+              });
+            });
           } else {
             setCart([]);
           }

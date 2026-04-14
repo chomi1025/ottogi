@@ -23,12 +23,12 @@ const CheckBox = styled.label`
   justify-content: center;
   position: relative;
   background-color: ${(props) => (props.checked ? "#d3233a" : "transparent")};
-  border: ${(props) => (props.checked ? "1px solid #d3233a" : "1px solid #ddd")};
+  border: ${(props) =>
+    props.checked ? "1px solid #d3233a" : "1px solid #ddd"};
   width: 24px;
   height: 24px;
   transition: 0.3s;
   border-radius: 4px;
-
 `;
 
 export default function CheckboxComponent(props) {
@@ -39,7 +39,7 @@ export default function CheckboxComponent(props) {
           <input
             type="checkbox"
             checked={props.checked}
-            onChange={props.onChange}
+            onChange={props.onChange || (() => {})}
           />
           {props.checked && <Check size={18} color="white" strokeWidth={3} />}
         </CheckBox>

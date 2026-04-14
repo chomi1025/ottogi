@@ -21,37 +21,11 @@ export default function CartTrue(props) {
   useEffect(() => {
     const auth = getAuth();
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setUserId(user.uid);
-      } else {
-        setUserId(null);
-      }
+      setUserId(user ? user.uid : null);
     });
-
     return () => unsubscribe();
   }, []);
 
-  useEffect(() => {
-    const fetchCart = async () => {
-      if (!userId) return;
-
-      try {
-        const cartRef = doc(db, "Cart", userId);
-        const cartSnap = await getDoc(cartRef);
-
-        if (cartSnap.exists()) {
-          const cartData = cartSnap.data().items || [];
-          props.setCart(cartData.map((item) => ({ ...item, select: true })));
-        }
-      } catch (error) {
-        console.error("장바구니 로딩 에러:", error);
-      }
-    };
-
-    fetchCart();
-  }, [userId]);
-
-  console.log(userId);
   // 상품삭제버튼
   const deleteCheckItem = async (userId, item) => {
     const cartRef = doc(db, "Cart", userId);
@@ -78,10 +52,8 @@ export default function CartTrue(props) {
 
     props.setCart((prevItems) =>
       prevItems.map((item) => {
-        const product = allProducts.find((p) => p.id === item.id);
-        return product?.tag?.refrigerated === false
-          ? { ...item, select: !allRoomTempSelected }
-          : item;
+        const isRoomTemp = roomTempItems.some((rt) => rt.id === item.id);
+        return isRoomTemp ? { ...item, select: !allRoomTempSelected } : item;
       }),
     );
   };
@@ -94,8 +66,10 @@ export default function CartTrue(props) {
 
     props.setCart((prevItems) =>
       prevItems.map((item) => {
-        const product = allProducts.find((p) => p.id === item.id);
-        return product?.tag?.refrigerated === true
+        const isRefrigerated = refrigeratedItems.some(
+          (rf) => rf.id === item.id,
+        );
+        return isRefrigerated
           ? { ...item, select: !allRefrigeratedSelected }
           : item;
       }),
@@ -111,20 +85,27 @@ export default function CartTrue(props) {
   };
 
   //수량변경함수
-  const updateQuantity = async (userId, item, newQuantity) => {
+  const updateQuantity = (userId, item, newQuantity) => {
     if (newQuantity < 1) return;
-    const cartRef = doc(db, "Cart", userId);
 
-    const newItems = props.cart.map((cartItem) =>
-      cartItem.id === item.id
-        ? { ...cartItem, quantity: newQuantity }
-        : cartItem,
-    );
+    // 1. UI 상태 즉시 변경 (Recoil)
+    props.setCart((prev) => {
+      const nextCart = prev.map((cartItem) =>
+        cartItem.id === item.id
+          ? { ...cartItem, quantity: newQuantity }
+          : cartItem,
+      );
 
-    await updateDoc(cartRef, {
-      items: newItems.map(({ select, ...rest }) => rest),
+      // 2. DB 업데이트는 별도로 슬쩍 (화면 렌더링에 영향 안 주게)
+      if (userId) {
+        const cartRef = doc(db, "Cart", userId);
+        updateDoc(cartRef, {
+          items: nextCart.map(({ select, product, ...rest }) => rest),
+        }).catch((err) => console.error("DB 업데이트 실패", err));
+      }
+
+      return nextCart;
     });
-    props.setCart(newItems);
   };
 
   // 증가
@@ -271,7 +252,6 @@ export default function CartTrue(props) {
                       checked={item.select}
                       onChange={() => toggleItem(item.id)}
                     />
-                    {/* ... 실온과 동일한 아이템 UI 구조 ... */}
                     <C.ImageWrapper>
                       <div>
                         <Link href={`/product/${item.id}`}>

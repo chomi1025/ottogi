@@ -4,7 +4,6 @@ import Breadcrumb from "./../../../../Component/Main/breadcrumb/index";
 import ProductWrapper from "./../../../../Component/Main/Product_Wrapper/index";
 
 export default function CategoryUI(props) {
-  console.log(props);
   return (
     <>
       <Inner width={"1410px"}>

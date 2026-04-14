@@ -18,7 +18,7 @@ const AuthProvider = ({ children }) => {
               ...docSnap.data(),
             }));
           } else {
-            console.log("No such document!");
+            console.log("결과없음");
           }
         });
       } else {
